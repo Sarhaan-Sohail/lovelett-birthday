@@ -43,15 +43,23 @@ export function App() {
     <div className="relative min-h-screen">
       {/* Top Floating Control Bar */}
       <header className="sticky top-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/10 px-4 py-2 flex items-center justify-between text-white">
-        <div className="flex items-center gap-2">
-          {/* Logo: icon-only on mobile, full logo on sm+ */}
-          <img src={lovelettLogo} alt="Lovelett" className="sm:hidden h-8 w-8 object-contain" />
-          <img src={lovelettLogo} alt="Lovelett" className="hidden sm:block h-9 w-auto" />
-          <span className="hidden sm:inline text-[10px] uppercase tracking-wider bg-white/10 px-2 py-0.5 rounded-full">
-            Birthday Story
-          </span>
-        </div>
-
+        <div className="flex min-w-0 items-center gap-2">
+  <img
+    src={lovelettLogo}
+    alt=""
+    aria-hidden="true"
+    className="h-8 w-8 shrink-0 object-contain"
+  />
+  <span
+    className="shrink-0 text-xl leading-none"
+    style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 600 }}
+  >
+    Lovelett
+  </span>
+  <span className="shrink-0 whitespace-nowrap rounded-full bg-white/10 px-2 py-0.5 text-[9px] uppercase tracking-wider sm:text-[10px]">
+    Birthday Story
+  </span>
+</div>
         <div className="flex items-center gap-2">
           <button
             type="button"
