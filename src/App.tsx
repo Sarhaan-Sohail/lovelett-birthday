@@ -2,7 +2,8 @@ import { useState } from 'react';
 import type { BirthdayData } from './types/birthday';
 import { defaultBirthdayData } from './types/birthday';
 import { BirthdayStory } from './components/BirthdayStory';
-import { Edit3, Eye, Sparkles, Share2, Check, Palette } from 'lucide-react';
+import { Edit3, Eye, Share2, Check, Palette } from 'lucide-react';
+import lovelettLogo from './assets/logo.svg';
 
 export function App() {
   const [data, setData] = useState<BirthdayData>(() => {
@@ -43,9 +44,10 @@ export function App() {
       {/* Top Floating Control Bar */}
       <header className="sticky top-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/10 px-4 py-2 flex items-center justify-between text-white">
         <div className="flex items-center gap-2">
-          <Sparkles className="text-pink-400" size={17} />
-          <span className="font-script text-xl font-bold">Lovelett</span>
-          <span className="text-[10px] uppercase tracking-wider bg-white/10 px-2 py-0.5 rounded-full">
+          {/* Logo: icon-only on mobile, full logo on sm+ */}
+          <img src={lovelettLogo} alt="Lovelett" className="sm:hidden h-8 w-8 object-contain" />
+          <img src={lovelettLogo} alt="Lovelett" className="hidden sm:block h-9 w-auto" />
+          <span className="hidden sm:inline text-[10px] uppercase tracking-wider bg-white/10 px-2 py-0.5 rounded-full">
             Birthday Story
           </span>
         </div>
@@ -59,12 +61,12 @@ export function App() {
             {mode === 'edit' ? (
               <>
                 <Eye size={13} />
-                <span>View Story</span>
+                <span className="hidden sm:inline">View Story</span>
               </>
             ) : (
               <>
                 <Edit3 size={13} />
-                <span>Customize</span>
+                <span className="hidden sm:inline">Customize</span>
               </>
             )}
           </button>
@@ -75,10 +77,11 @@ export function App() {
             className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-pink-600 hover:bg-pink-500 transition-all cursor-pointer"
           >
             {copiedLink ? <Check size={13} /> : <Share2 size={13} />}
-            <span>{copiedLink ? 'Copied!' : 'Share'}</span>
+            <span className="hidden sm:inline">{copiedLink ? 'Copied!' : 'Share'}</span>
           </button>
         </div>
       </header>
+
 
       {mode === 'edit' ? (
         <div className="max-w-xl mx-auto py-8 px-4 text-white">
