@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply antialiased min-h-screen;
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
+  }
+}
+
+.font-script {
+  font-family: 'Dancing Script', cursive;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-pinyon {
+  font-family: 'Pinyon Script', cursive;
+}
+
+.font-dm {
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Animations from the handoff notes & design */
+.enter { animation: sceneIn .55s cubic-bezier(.2,.8,.2,1) both; }
+.leave { animation: sceneOut .32s ease-in both; }
+@keyframes sceneIn { from { opacity: 0; transform: translateY(24px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes sceneOut { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-18px) scale(1.03); } }
+
+.ch { display: inline-block; animation: letterIn .85s cubic-bezier(.2,.9,.3,1.2) both; }
+@keyframes letterIn {
+  0% { opacity: 0; transform: translateY(46px) rotate(12deg) scale(.5); }
+  55% { opacity: 1; transform: translateY(-10px) rotate(-4deg) scale(1.1); }
+  80% { transform: translateY(3px) rotate(1deg) scale(.98); }
+  100% { opacity: 1; transform: none; }
+}
+
+.up { animation: upIn .7s ease both; }
+@keyframes upIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.d1 { animation-delay: .2s; }
+.d2 { animation-delay: .9s; }
+.d3 { animation-delay: 1.6s; }
+.d4 { animation-delay: 2.6s; }
+
+.cardDeal { animation: cardDeal .7s cubic-bezier(.2,.9,.3,1.2) both; }
+@keyframes cardDeal { from { opacity: 0; transform: translateY(40px) rotate(-6deg) scale(.9); } to { opacity: 1; transform: none; } }
+
+.fWrap { perspective: 1000px; }
+.fIn { transition: transform .85s cubic-bezier(.2,.8,.2,1); transform-style: preserve-3d; }
+.fIn.flipped { transform: rotateY(180deg); }
+.fIn.flipped, .fIn { -webkit-tap-highlight-color: transparent; }
+.fFace { position: absolute; inset: 0; border-radius: 20px; display: flex; align-items: center; justify-content: center; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.fBack { transform: rotateY(180deg); }
+
+.float { animation: float 3s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-8px); } }
+
+.seal { transform-box: fill-box; transform-origin: center; animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse { 50% { transform: scale(1.12); } }
+
+.heartIdle { transform: translateY(46px); }
+.heartUp { animation: heartUp .95s cubic-bezier(.2,.8,.3,1) both; }
+@keyframes heartUp { from { transform: translateY(46px); } to { transform: translateY(-30px); } }
+
+.balloon { position: absolute; bottom: -100px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; opacity: .95; animation: rise linear infinite both; }
+.balloon::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: 64px; background: currentColor; opacity: .5; }
+@keyframes rise { 0% { transform: translate(0,0); } 50% { transform: translate(14px,-60vh); } 100% { transform: translate(-8px,-125vh); } }
+
+.swash { stroke-dashoffset: 260; animation: swash 1s ease 1.8s both; }
+@keyframes swash { from { stroke-dashoffset: 260; } to { stroke-dashoffset: 0; } }
+
+.cakeIn { animation: cakeRise .9s cubic-bezier(.2,.9,.3,1.2) both; }
+@keyframes cakeRise { from { opacity: 0; transform: translateY(60px) scale(.8); } to { opacity: 1; transform: none; } }
+
+.glow { transform-box: fill-box; transform-origin: center; animation: glow 2s ease-in-out infinite; }
+@keyframes glow { 50% { transform: scale(1.12); } }
+
+.flame { transform-box: fill-box; transform-origin: 50% 100%; animation: flicker .55s ease-in-out infinite alternate; }
+.f2 { animation-delay: .18s; }
+.f3 { animation-delay: .34s; }
+@keyframes flicker { from { transform: scale(1,1) rotate(-3deg); } to { transform: scale(.9,1.1) rotate(3deg); } }
+
+.smoke { transform-box: fill-box; transform-origin: center; animation: smoke 1.7s ease-out both; }
+.smokeOff { opacity: 0; }
+@keyframes smoke { 0% { opacity: .85; transform: translateY(0) scale(.6); } 100% { opacity: 0; transform: translateY(-52px) scale(2.2); } }
+
+.tap { transform-box: fill-box; transform-origin: center; animation: tap 1.2s ease-in-out infinite; }
+@keyframes tap { 50% { transform: scale(1.7); } }
+
+.sliceOut { transform-box: fill-box; transform-origin: 50% 100%; animation: sliceOut .9s cubic-bezier(.3,1.2,.4,1) both; }
+@keyframes sliceOut { to { transform: translate(52px,10px) rotate(9deg); } }
+
+.conf { position: absolute; top: -24px; border-radius: 2px; animation: fall linear both; }
+@keyframes fall { 0% { transform: translateY(0) rotate(0); } 100% { transform: translateY(112vh) rotate(720deg); } }
+
+.pol { animation: drop .95s cubic-bezier(.3,1.2,.4,1) both; }
+@keyframes drop { 0% { opacity: 0; transform: translate(var(--x),-440px) rotate(-30deg); } 100% { opacity: 1; transform: translate(var(--x),0) rotate(var(--r)); } }
+.pol0 { --x: -46px; --r: -7deg; animation-delay: .3s; top: 0; }
+.pol1 { --x: 44px; --r: 5deg; top: 34px; }
+.pol2 { --x: -6px; --r: -2deg; top: 68px; }
+
+.hw { animation: wipe2 1.3s ease both; }
+@keyframes wipe2 { from { clip-path: inset(-20px 100% -20px 0); transform: translateX(-6px); } to { clip-path: inset(-20px -20px -20px -20px); transform: none; } }
+.h1 { animation-delay: .9s; }
+.h2 { animation-delay: 1.5s; }
+.h3 { animation-delay: 2.4s; }
+.h4 { animation-delay: 3.5s; }
+.h5 { animation-delay: 4.6s; }
+.h6 { animation-delay: 5.7s; }
+.h7 { animation-delay: 6.4s; }
+
+.paperIn { animation: paperIn 1s cubic-bezier(.2,.9,.3,1.1) both; }
+@keyframes paperIn { from { opacity: 0; transform: translateY(90px) rotate(-4deg); } to { opacity: 1; transform: rotate(-0.8deg); } }
+
+.stamp { animation: stamp .6s cubic-bezier(.2,1.4,.3,1) 7.2s both; }
+@keyframes stamp { from { opacity: 0; transform: scale(1.9) rotate(-20deg); } to { opacity: 1; transform: rotate(-8deg); } }
+
+.bowOff { transform-box: fill-box; transform-origin: center; animation: bowOff .7s ease-in both; }
+@keyframes bowOff { to { opacity: 0; transform: translateY(-34px) rotate(-18deg); } }
+
+.lidOpen { transform-box: fill-box; transform-origin: 100% 100%; animation: lidOpen .8s cubic-bezier(.3,1.3,.4,1) both; }
+@keyframes lidOpen { to { transform: translate(34px,-58px) rotate(24deg); } }
+
+.spark { transform-box: fill-box; transform-origin: center; animation: twinkle 1.2s ease-in-out infinite; }
+.sp2 { animation-delay: .3s; }
+.sp3 { animation-delay: .6s; }
+.sp4 { animation-delay: .9s; }
+@keyframes twinkle { 50% { transform: scale(1.5) rotate(20deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; }
+  .fIn { transition: none; }
+}
